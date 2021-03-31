@@ -17,9 +17,11 @@ Syntax highlighted code block
 
 - Bulleted
 - List
+- Charts
 
 1. Numbered
 2. List
+3. Data Tables
 
 **Bold** and _Italic_ and `Code` text
 
