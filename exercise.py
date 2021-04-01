@@ -10,7 +10,7 @@ class Cast:
     """
     def __init__(self, name, film):
         self.name = name
-        self.film = set()
+        self.film = film
     
     def find_film(self, name):
         """Used to find the film(s) an actor/actress is in.
@@ -23,5 +23,15 @@ class Cast:
         """
         #enter code below
         
+    def get_actor(self, film):
+        """Used to find the actors and the film they are associated with. 
+        
+        Attributes:
+            film (str): The title of the film
+            
+        Returns: 
+            The set of the actor/actress that is in the film.
+        """
+
     
     
