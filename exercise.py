@@ -34,5 +34,20 @@ class Cast:
         """
         #enter code below
 
+ class Movies:
+    """ Movies from the csv file
+    Attributes:
+    title(str): the title of the movies
+    actors(str): all of the actors from each respective movie
+    
+    """
+    def __init__(self, name):
+        with open('movies.csv', 'w', newline='') as csvfile:
+        movieInfo = ['Movie', 'Actors']
+        writer = csv.DictWriter(csvfile, movieInfo = movieInfo)
+    """
+    read in the csv file of movies with their attached actors
+    
+    """
     
     
