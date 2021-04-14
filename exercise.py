@@ -1,4 +1,4 @@
-
+import pandas as pd
 """"Simple movie database with actors/actresses."""
 
 class Cast:
@@ -34,6 +34,16 @@ class Cast:
         """
         #enter code below
 
+ class Data():
+    """ This class will be used to display the information in the file with the actors and their movies/ or their movie appearances"""
+    def display_data():
+        data = pd.read_csv("filename.csv", sep = ',')
+        data
+        
+    def count_appearance():
+        appearances = pd.Series({content goes here })
+        total_appearance = appearances.isin(["Actor name goes here"])
+        total_appearance
  class Movies:
     """ Movies from the csv file
     Attributes:
