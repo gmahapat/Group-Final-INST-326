@@ -6,7 +6,7 @@ class Cast:
     
     Attributes:
         name (str): the actors/actresses name.
-        film (set of Cast): films in which actors/actresses star in. 
+        film (str): name of a movie. 
     """
     def __init__(self, name, film):
         self.name = name
@@ -15,7 +15,7 @@ class Cast:
     def find_film(self, name):
         """Used to find the film(s) an actor/actress is in.
         
-        Attributes:
+        Args:
             name (str): the actors/actresses name.
         
         Returns:
@@ -26,16 +26,40 @@ class Cast:
     def get_actor(self, film):
         """Used to find the actors and the film they are associated with. 
         
-        Attributes:
+        Args:
             film (str): The title of the film
             
         Returns: 
             The set of the actor/actress that is in the film.
         """
         #enter code below
-
- class Data():
-    """ This class will be used to display the information in the file with the actors and their movies/ or their movie appearances"""
+        
+ class Output:
+    """Will retrieve appropriate data and order the data in alphabetical order."""
+    
+    def order_cast(film):
+        """Get the correct names for the movie and list in alphabetical order.
+        
+        Args:
+            film (str): name of movie
+           
+        Returns:
+            cast (list): returns a list of the cast who act in the given movie.
+        """
+    def order_film(name):
+        """Get the correct movies that the actor is in and list in alphabetical order.
+        
+        Args:
+            name (str): name of actor
+           
+        Returns:
+            movies (list): returns a list of the movies that the actor acted in.
+        """
+     
+ class Data:
+    """This class will be used to display the information in the file with the actors 
+    and their movies/ or their movie appearances."""
+    
     def display_data():
         data = pd.read_csv("filename.csv", sep = ',')
         data
@@ -44,12 +68,13 @@ class Cast:
         appearances = pd.Series({content goes here })
         total_appearance = appearances.isin(["Actor name goes here"])
         total_appearance
+        
  class Movies:
     """ Movies from the csv file
-    Attributes:
-    title(str): the title of the movies
-    actors(str): all of the actors from each respective movie
     
+    Attributes:
+        title(str): the title of the movies
+        actors(str): all of the actors from each respective movie    
     """
     def __init__(self, name):
         with open('movies.csv', 'w', newline='') as csvfile:
