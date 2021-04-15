@@ -2,26 +2,34 @@ import pandas as pd
 """"Simple movie database with actors/actresses."""
 
 class Cast:
-    """"Actors/actresses in a film. 
+    """"The purpose of this class is associating 
+    Actors/actresses to a film. 
     
     Attributes:
         name (str): the actors/actresses name.
         film (str): name of a movie. 
     """
     def __init__(self, name, film):
+        """ The purpose of this method is allowing the Cast class to 
+        initialize the attributes of a class. 
+        
+        Args:
+            name(str): name of actors/actress.
+            film(str): name of film.
+        
+        """
         self.name = name
         self.film = film
     
     def find_film(self, name):
-        """Used to find the film(s) an actor/actress is in.
+        """Used to find the actor/actress.
         
         Args:
             name (str): the actors/actresses name.
         
         Returns:
-            The film(s) that the actor/actress stars in.
+            actor_film(list): list of actors and actresses.  
         """
-        #enter code below
         
     def get_actor(self, film):
         """Used to find the actors and the film they are associated with. 
@@ -30,9 +38,8 @@ class Cast:
             film (str): The title of the film
             
         Returns: 
-            The set of the actor/actress that is in the film.
+            cast_film(tuple): a tuple of the actor/actress along with the film they are associted with. 
         """
-        #enter code below
         
  class Output:
     """Will retrieve appropriate data and order the data in alphabetical order."""
