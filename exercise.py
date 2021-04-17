@@ -82,10 +82,19 @@ class Cast:
     
     def parse_args(arglist):
    #user input
+"""
+Gets the user input of which movie/actor being entered
+
+Args: arglist(string)
+
+"""
 
 
 if __name__ == "__main__":
    
+"""
+Allows for files to be ran directly and/or when modules are imported
 
+"""
     
     
