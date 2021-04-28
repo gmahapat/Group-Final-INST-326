@@ -103,17 +103,31 @@ class Cast:
 def parse_args(arglist):
     """Parse command-line arguments.
     
+    Two arguments are expected, the file name of a CSV file containing film names
+    along with the names of the cast members. Text values.
+    
     Args:
         arglist (list of str): a list of command-line arguments.
     
     Returns:
-        namespace: the parsed command-line arguments as a namespace with
-        variables (csv file name).
+        namespace: an object with file name and the name of a movie or actor/actress.
+    
+    Reference:
+        Example code obtained from Aric Bills from previous exercise assignments.
     """
+    parser = ArgumentParser()
+    parser.add_argument("file", help="path to movies CSV file")
+    parser.add_argument("name", help="name of actor/actress")
+    parser.add_argument("film", help="name of movie")
+    return parser.parse_args(arglist)
 
 
 if __name__ == "__main__":
     """Runs the rest of the program. Allows for files to be ran directly 
         and/or when modules are imported."""
+    args = parse_args(sys.argv[1:])
+    #NEEDS ATTENTION
+    #movies = best_movies(args.movie_csv, args.rating_csv)
+    #print(movies.head())
     
     
