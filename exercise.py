@@ -71,6 +71,15 @@ class Cast:
             print: prints each actor/actress name in its own line in alphabetical order by
                     first name.
         """
+        #if film is not in csv return 
+        if film not in df.keys():
+            return "Information for this film is not available"
+        #retrieve the string containing all the actors in film
+        film_cast = df[film].split(',')
+        film_cast.sort()
+        for actor in film_cast:
+            print (actor,'\n')
+            
     def order_film(name):
         """Get the correct movies that the actor/actress is in, in alphabetical order.
         
@@ -80,7 +89,23 @@ class Cast:
         Side effects:
             print: prints each movie in its own line in alphabetical order.
         """
-     
+        result = []
+        #assuming our dataframe is converted into a python dictionary
+        #iterate through each movie and its list of actors
+        for movie, names in df.items(): 
+
+            #convert the string of actors into a list
+            name_list = names.split(",")
+            #if the desired actor is in the list of actors add the movie to result
+            if name in name_list:
+                result.append(movie)
+        if not result:
+            return "This actor is not featured in the current list of movies"
+        #sort the movies by alphabetical order and print line by line
+        result.sort()
+        for movie in result:
+            print (movie,'\n')
+
  class Data:
     """This class will be used to display the information in the file with the actors 
     and their movies.
