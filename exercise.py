@@ -36,10 +36,10 @@ class Cast:
         
         with open(name, "r", encoding="utf-8") as name_csv:
             read_file = name_csv.readlines()
-        for line in read_file:
-            detail = line.split(",")
-            file_list.append(detail[0]) # movie title is at index zero 
-        return file_list
+            for line in read_file:
+                detail = line.split(",")
+                file_list.append(detail[0]) # movie title is at index zero 
+            return file_list
        
     def get_cast(self, film):
         """Used to get the cast of a film, obtains who acts in the film given. 
