@@ -55,6 +55,8 @@ class Cast:
         """Used to get the cast of a film, obtains who acts in the film given. Based
         on user_input. Key is movie and value is cast.
         
+        CALL find_film method to avoid opening it many times!
+        
         Args:
             film (str): the title of the film
             
