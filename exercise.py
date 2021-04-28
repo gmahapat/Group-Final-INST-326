@@ -29,9 +29,18 @@ class Cast:
             name (str): the actors/actresses name.
         
         Returns:
-            get_film (list): list of movies the actor/actress stars in.  
+            file_list (list): list of movies the actor/actress stars in.  
         """
+        file_dict = {}
+        file_list = []
         
+        with open(name, "r", encoding="utf-8") as name_csv:
+            read_file = name_csv.readlines()
+        for line in read_file:
+            detail = line.split(",")
+            file_list.append(detail[0]) # movie title is at index zero 
+        return file_list
+       
     def get_cast(self, film):
         """Used to get the cast of a film, obtains who acts in the film given. 
         
@@ -39,12 +48,18 @@ class Cast:
             film (str): the title of the film
             
         Returns: 
-            film_cast (key:value pair): a key: value pair of the actors/actresses 
-                                        along with the film they are associted with.
-                                        with the film name as the key and a list of the 
-                                        cast as the value.
+            film_dict (key:value pair): a key: value pair of the 
+            actors/actresses along with the film they are associted with 
+            the film name as the key and a list of the cast as the value.
         """
-    
+        file_dict = {}
+        with open(film, "r", encoding="utf-8") as title:
+            read_title = title.readlines()
+            for line in read_title:
+                title_list = line.split(",")
+                file_dict[title_list[0]] = title_list[1].strip()
+            return file_dict
+        
     def order_cast(film):
         """Obtains the names of the cast in a given movie and prints them
             in alphabetical order.
