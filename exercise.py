@@ -21,6 +21,13 @@ class Cast:
         """
         self.name = name
         self.film = film
+     """"The purpose of this class is getting input from user.
+    
+    Attributes:
+        something (str): input from user.
+    """
+    def user_input(something):
+        their_input = input("Enter something here:")
     
     def find_film(self, name):
         """Used to find the film(s) a given actor/actress stars in.
@@ -40,9 +47,6 @@ class Cast:
                 detail = line.split(",")
                 file_list.append(detail[0]) # movie title is at index zero 
             return file_list
-    
-    def user_input(something):
-        their_input = input("Enter something here:")
     
     def get_cast(self, film):
         """Used to get the cast of a film, obtains who acts in the film given. 
