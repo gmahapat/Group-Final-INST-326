@@ -1,3 +1,2 @@
 """ Simple code for movie database"""
-class Cast:
-    pass
+print("I'm here for the chek in")
