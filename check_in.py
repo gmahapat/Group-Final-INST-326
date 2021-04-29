@@ -37,6 +37,7 @@ class Cast:
     def get_cast(self):
         """Used to get the cast of a film, based off user input. 
         The key is movie and value is cast.
+
             
         Returns: 
             film_dict: a key:value pair of the actors/actresses along with the 
@@ -47,7 +48,7 @@ class Cast:
         film = input("Enter a movie name: ")
         for index,row in self.df.iterrows():
             if film == row['title']:
-                file_dict[row['title']] = row['actors'].split(', ')
+                film_dict[row['title']] = row['actors'].split(', ')
                 return film_dict
             
 # initialize the Cast class with our csv file
