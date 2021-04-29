@@ -49,16 +49,6 @@ class Cast:
             if film == row['title']:
                 file_dict[row['title']] = row['actors'].split(', ')
                 return file_dict
-            
-# initialize the Cast class with our csv file
-test_search = Cast("movies_and_cast.csv")
-
-# print find_film() list of movies based on user input
-print(test_search.find_film())
-print("-" * 160)
-
-# print get_cast() dictionary with movie as key and cast as value
-print(test_search.get_cast())
         
     def order_cast(film):
         """Obtains the names of the cast in a given movie and prints them
