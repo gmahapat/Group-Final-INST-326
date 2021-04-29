@@ -37,18 +37,19 @@ class Cast:
     def get_cast(self):
         """Used to get the cast of a film, based off user input. 
         The key is movie and value is cast.
+
             
         Returns: 
             film_dict: a key:value pair of the actors/actresses along with the 
             film they are associted with. The film name as the key and a list 
             of the cast as the value. This is based off of user input.
         """
-        file_dict = {}
+        film_dict = {}
         film = input("Enter a movie name: ")
         for index,row in self.df.iterrows():
             if film == row['title']:
-                file_dict[row['title']] = row['actors'].split(', ')
-                return file_dict
+                film_dict[row['title']] = row['actors'].split(', ')
+                return film_dict
         
     def order_cast(film):
         """Obtains the names of the cast in a given movie and prints them
