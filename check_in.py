@@ -10,7 +10,7 @@ class Cast:
         file_name (str): path to file.
     """
     def __init__(self, file_name):
-        """ The purpose of this method is allowing the Arrdvark class to 
+        """ The purpose of this method is allowing the Cast class to 
             initialize the attributes of a class. 
 
         Args:
