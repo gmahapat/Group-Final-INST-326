@@ -4,8 +4,7 @@
 import pandas as pd
 
 class Cast:
-    """"The purpose of this class is associating 
-    Actors/actresses to a film. 
+    """"The purpose of this class is associating Actors/actresses to a film. 
     
     Attributes:
         name (str): the actors/actresses name.
@@ -19,59 +18,50 @@ class Cast:
             name(str): name of actors/actress.
             film(str): name of film.
         """
-        self.name = name
-        self.film = film
-        
-     """"The purpose of this class is getting input from user.
-    
-        Args:
-            something (str): input from user.
-    """
-    def user_input(something):
-        their_input = input("Enter something here:")
+    def __init__(self, file_name):
+        self.df = pd.read_csv(file_name)
+        self.df['title'] = self.df['title'].astype(str)
+        self.df['actors'] = self.df['actors'].astype(str)
     
     def find_film(self, name):
-        """Used to find the film(s) a given actor/actress stars in based on the user_input.
-        Uses the user_input method in order to output the list of movies an actor/actress
-        stars in.
+        """Used to find the film(s) a given actor/actress stars in based on 
+        the user_input. Uses the user_input method in order to 
+        output the list of movies an actor/actress stars in.
         
         Args:
             name (str): the actors/actresses name.
         
         Returns:
             file_list (list): list of movies the actor/actress stars in.  
-        """
-        file_dict = {}
-        file_list = []
-        
-        with open(name, "r", encoding="utf-8") as name_csv:
-            read_file = name_csv.readlines()
-            for line in read_file:
-                detail = line.split(",")
-                file_list.append(detail[0]) # movie title is at index zero 
-            return file_list
+    """
+    def find_film(self):
+        film_list = []
+        name = input("Enter actor/actress:")
+        for index,row in self.df.iterrows():
+            if name in row['actors'].split(', '):
+                film_list.append(row['title'])
+        return film_list
     
     def get_cast(self, film):
-        """Used to get the cast of a film, obtains who acts in the film given. Based
-        on user_input. Key is movie and value is cast.
-        
-        CALL find_film method to avoid opening it many times!
-        
+        """Used to get the cast of a film, based off user input. 
+        Key is movie and value is cast.
+                
         Args:
             film (str): the title of the film
             
         Returns: 
-            film_dict (key:value pair): a key: value pair of the 
-            actors/actresses along with the film they are associted with 
-            the film name as the key and a list of the cast as the value.
+            film_dict: a key:value pair of the 
+            actors/actresses along with the film they are associted with. 
+            The film name as the key and a list of the cast as the value. This
+            is based off user input.
         """
+    def get_cast(self):
         file_dict = {}
-        with open(film, "r", encoding="utf-8") as title:
-            read_title = title.readlines()
-            for line in read_title:
-                title_list = line.split(",")
-                file_dict[title_list[0]] = title_list[1].strip()
-            return file_dict
+        film = input("Enter a movie name:")
+        for index,row in self.df.iterrows():
+            if film == row['title']:
+                file_dict[row['title']] = row['actors'].split(', ')
+                return file_dict
         
     def order_cast(film):
         """Obtains the names of the cast in a given movie and prints them
