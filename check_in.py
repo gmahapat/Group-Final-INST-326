@@ -66,13 +66,13 @@ def main(moviecastcsv):
         stays on the console after the runs.
     """
     file = Cast(moviecastcsv)
-    run = input("What method are you interested in, find_film or get_cast? ")
+    run = input("What method are you interested in, order_film or order_cast? ")
     chosen = False
     while not chosen:
-        if run == "find_film":
+        if run == "order_film":
             chosen = True
             print(file.order_film())
-        elif run == "get_cast":
+        elif run == "order_cast":
             chosen = True
             print(file.order_cast())
         else:
