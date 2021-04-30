@@ -2,6 +2,8 @@
     the appropriate film(s) for a given actor/actress in alphabetical order."""
 
 import pandas as pd
+from argparse import ArgumentParser
+import sys
 
 class Cast:
     """"The purpose of this class is associating actors/actresses to a film. 
