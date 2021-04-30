@@ -71,10 +71,10 @@ def main(moviecastcsv):
     while not chosen:
         if run == "find_film":
             chosen = True
-            print(file.find_film())
+            print(file.order_film())
         elif run == "get_cast":
             chosen = True
-            print(file.get_cast())
+            print(file.order_cast())
         else:
             None
         
