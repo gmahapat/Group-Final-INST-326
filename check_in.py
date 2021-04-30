@@ -51,12 +51,49 @@ class Cast:
                 film_dict[row['title']] = row['actors'].split(', ')
                 return film_dict
             
-# initialize the Cast class with our csv file
-test_search = Cast("movies_and_cast.csv")
+def main(moviecastcsv):
+    """Uses a file path to identify appropriate output. 
+        Ask the user what they wish to find
+        initializes the corresponding method.
+    
+    Args:
+        moviecastcsv (str): csv file
+        
+    Side effects:
+        prints the output of the method identified in the Cast class that
+        stays on the console after the runs.
+    """
+    file = Cast(moviecastcsv)
+    run = input("What method are you interested in, find_film or get_cast? ")
+    chosen = False
+    while not chosen:
+        if run == "find_film":
+            chosen = True
+            print(file.find_film())
+        elif run == "get_cast":
+            chosen = True
+            print(file.get_cast())
+        else:
+            None
+        
+def parse_args(arglist):
+    """Parse command-line argument.
+    
+    Expect one mandatory argument:
+        - moviecastcsv: the path to a CSV file containing
+            movies and cast members.
+    
+    Args:
+        arglist (str): argument from the command line.
+    
+    Returns:
+        namespace: the parsed arguments, as a namespace
+    """
+    parser = ArgumentParser()
+    parser.add_argument("moviecastcsv",
+                        help="file of movies and cast")
+    return parser.parse_args(arglist)
 
-# print find_film() list of movies based on user input
-print(test_search.find_film())
-print("-" * 160)
-
-# print get_cast() dictionary with movie as key and cast as value
-print(test_search.get_cast())
+if __name__ == "__main__":
+    args = parse_args(sys.argv[1:])
+    main(args.moviecastcsv)
