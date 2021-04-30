@@ -1,5 +1,5 @@
-""""Identifies the appropriate actors/actresses for a given film or
-    the appropriate film(s) for a given actor/actress in alphabetical order."""
+""""Identifies the appropriate actors/actresses for a given film, 
+    the appropriate film(s) for a given actor/actress or year."""
 
 import pandas as pd
 from argparse import ArgumentParser
@@ -21,6 +21,7 @@ class Cast:
         self.df = pd.read_csv(file_name)
         self.df['title'] = self.df['title'].astype(str)
         self.df['actors'] = self.df['actors'].astype(str)
+        self.df['year'] = self.df['year'].astype(str)
     
     def find_film(self):
         """Used to find the film(s) a given actor/actress stars in based on 
@@ -53,6 +54,18 @@ class Cast:
                 film_dict[row['title']] = row['actors'].split(', ')
                 return film_dict
             
+    def what_year(self):
+        """Finds all movies in a given year.
+        
+        Returns:
+            movie_list (list): list of movies in a given year."""
+        movie_list = []
+        year = input("Enter a year: ")
+        for index,row in self.df.iterrows():
+            if year in row['year']:
+                movie_list.append(row['title'])
+        return movie_list
+            
 def main(moviecastcsv):
     """Uses a file path to identify appropriate output. 
         Ask the user what they wish to find
@@ -66,15 +79,18 @@ def main(moviecastcsv):
         stays on the console after the runs.
     """
     file = Cast(moviecastcsv)
-    run = input("What method are you interested in, order_film or order_cast? ")
+    run = input("What method are you interested in, find_film, get_cast or what_year? ")
     chosen = False
     while not chosen:
-        if run == "order_film":
+        if run == "find_film":
             chosen = True
-            print(file.order_film())
-        elif run == "order_cast":
+            print(file.find_film())
+        elif run == "get_cast":
             chosen = True
-            print(file.order_cast())
+            print(file.get_cast())
+        elif run == "what_year":
+            chosen = True
+            print(file.what_year())
         else:
             None
         
