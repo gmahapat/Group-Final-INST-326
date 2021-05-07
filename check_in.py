@@ -22,6 +22,11 @@ class Cast:
         self.df['title'] = self.df['title'].astype(str)
         self.df['actors'] = self.df['actors'].astype(str)
         self.df['year'] = self.df['year'].astype(str)
+        
+        #This function will possibly be used in order to open the file and read it into a table. Currently under maintenance
+    #def display_data():
+        #open_file = pd.read_csv("movies_and_cast_csv").head()
+        #open_file
     
     def find_film(self):
         """Used to find the film(s) a given actor/actress stars in based on 
