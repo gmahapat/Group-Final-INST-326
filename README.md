@@ -13,6 +13,8 @@ An annotated bibliography of all sources you used to develop your project. For e
 ##### If on Windows - python search_movie_database.py movies_and_cast.csv
 2. The program will ask you a question, input the method you would like to run exactly as it shows in the question and press enter.
 3. According to the method you have choosen the program will ask you to provide the necessary information to successfully run the method.
-4. Please type your second input in general Title and Name characters. Ex. Movie title = Cinderella with a capital C Ex. Actor/Actress = Megan Fox with the first letter of the first and last name capitalized.
-5. If you would like to end the program enter "Done" this will exit the program.
+4. Please type your second input in general Title and Name characters. 
+##### Ex. Movie title = Cinderella with the first letter of each word in the title capitalized.
+##### Ex. Actor/Actress = Megan Fox with the first letter of the first and last name capitalized.
+6. If you would like to end the program enter "Done" this will exit the program.
 ### Annotated Bibliography
