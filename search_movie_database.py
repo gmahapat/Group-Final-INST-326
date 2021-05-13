@@ -96,8 +96,7 @@ def main(moviecastcsv):
             print("-"*50, "END OF PROGRAM", "-"*50)
             break
         else:
-            print("-"*50, "INVALID INPUT", "-"*50)
-            break
+            print("-"*50, "INVALID INPUT. TRY AGAIN.", "-"*50)
         
 def parse_args(arglist):
     """Parse command-line argument.
