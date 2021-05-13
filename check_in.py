@@ -84,20 +84,20 @@ def main(moviecastcsv):
         stays on the console after the runs.
     """
     file = Cast(moviecastcsv)
-    run = input("What method are you interested in, find_film, get_cast or what_year? ")
-    chosen = False
-    while not chosen:
+    while True:
+        run = input("Enter 'done' to exit the program.\nEnter find_film, get_cast, or what_year: ")
         if run == "find_film":
-            chosen = True
             print(file.find_film())
         elif run == "get_cast":
-            chosen = True
             print(file.get_cast())
         elif run == "what_year":
-            chosen = True
             print(file.what_year())
+        elif run == "done":
+            print("-"*50, "END OF PROGRAM", "-"*50)
+            break
         else:
-            None
+            print("-"*50, "INVALID INPUT", "-"*50)
+            break
         
 def parse_args(arglist):
     """Parse command-line argument.
