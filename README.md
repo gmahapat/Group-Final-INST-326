@@ -10,6 +10,7 @@ An annotated bibliography of all sources you used to develop your project. For e
 ### Instructions
 1. In order to run the program successful from the comand line you will need to input the following prompt:
 If on Mac - python3 search_movie_database.py movies_and_cast.csv
+
 If on Windows - python search_movie_database.py movies_and_cast.csv
 2. The program will ask you a question, input the method you would like to run exactly as it shows in the question and press enter.
 3. According to the method you have choosen the program will ask you to provide the necessary information to successfully run the method.
