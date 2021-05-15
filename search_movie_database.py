@@ -102,7 +102,6 @@ def main(moviecastcsv):
     file = Cast(moviecastcsv)
     while True:
         run = input("Enter 'done' to exit the program.\nEnter find_film, get_cast, or what_year: ")
-        searches.append(run)
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
