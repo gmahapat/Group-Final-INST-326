@@ -5,19 +5,22 @@ import pandas as pd
 from argparse import ArgumentParser
 import sys
 
+searches = []
 class Cast:
     """"The purpose of this class is associating actors/actresses to a film. 
     
     Attributes:
         file_name (str): path to file.
     """
+    
     def __init__(self, file_name):
         """ The purpose of this method is allowing the Cast class to 
             initialize the attributes of a class. 
 
         Args:
             file_name (str): file path
-        """  
+        """
+        
         self.df = pd.read_csv(file_name)
         self.df['title'] = self.df['title'].astype(str)
         self.df['actors'] = self.df['actors'].astype(str)
@@ -37,6 +40,7 @@ class Cast:
     """
         film_list = []
         name = input("Enter actor/actress: ")
+        searches.append(name)
         for index,row in self.df.iterrows():
             if name in row['actors'].split(', '):
                 film_list.append(row['title'])
@@ -54,6 +58,7 @@ class Cast:
         """
         film_dict = {}
         film = input("Enter a movie name: ")
+        searches.append(film)
         for index,row in self.df.iterrows():
             if film == row['title']:
                 film_dict[row['title']] = row['actors'].split(', ')
@@ -66,11 +71,21 @@ class Cast:
             movie_list (list): list of movies in a given year."""
         movie_list = []
         year = input("Enter a year: ")
+        searches.append(year)
         for index,row in self.df.iterrows():
             if year in row['year']:
                 movie_list.append(row['title'])
         return movie_list
-            
+
+def print_search_history(input_array):
+    print ("User search history:\n")
+    iteration = 0
+    for input in input_array:
+        print (str(iteration) + ":", input)
+        iteration += 1
+    searches.clear()   
+
+
 def main(moviecastcsv):
     """Uses a file path to identify appropriate output. 
         Ask the user what they wish to find
@@ -83,9 +98,11 @@ def main(moviecastcsv):
         prints the output of the method identified in the Cast class that
         stays on the console after the runs.
     """
+    
     file = Cast(moviecastcsv)
     while True:
         run = input("Enter 'done' to exit the program.\nEnter find_film, get_cast, or what_year: ")
+        searches.append(run)
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
@@ -94,6 +111,7 @@ def main(moviecastcsv):
             print(file.what_year())
         elif run == "done":
             print("-"*50, "END OF PROGRAM", "-"*50)
+            print_search_history(searches)
             break
         else:
             print("-"*50, "INVALID INPUT. TRY AGAIN.", "-"*50)
