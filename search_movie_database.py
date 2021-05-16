@@ -1,35 +1,35 @@
-""""Identifies the appropriate actors/actresses for a given film, 
-    the appropriate film(s) for a given actor/actress or year."""
+""""Searches a database for the user's input."""
 
 import pandas as pd
 from argparse import ArgumentParser
 import sys
 
 searches = []
-class Cast:
-    """"The purpose of this class is associating actors/actresses to a film. 
+class Search:
+    """"The purpose of this class is to find the user's input, from films
+        to cast, year and genre. 
     
     Attributes:
         file_name (str): path to file.
     """
     
     def __init__(self, file_name):
-        """ The purpose of this method is allowing the Cast class to 
-            initialize the attributes of a class. 
-
+        """ The purpose of this method is allowing the Search class to 
+            initialize the attributes of the class. 
         Args:
             file_name (str): file path
         """
-        
+        self.count = []
         self.df = pd.read_csv(file_name)
         self.df['title'] = self.df['title'].astype(str)
         self.df['actors'] = self.df['actors'].astype(str)
         self.df['year'] = self.df['year'].astype(str)
+        self.df['genre'] = self.df['genre'].astype(str)
         
         #This function will possibly be used in order to open the file and read it into a table. Currently under maintenance
-    #def display_data():
-        #open_file = pd.read_csv("movies_and_cast_csv").head()
-        #open_file
+    def display_data():
+        open_file = pd.read_csv("movies_and_cast_csv").head()
+        open_file
     
     def find_film(self):
         """Used to find the film(s) a given actor/actress stars in based on 
@@ -37,19 +37,20 @@ class Cast:
         
         Returns:
             film_list (list): list of movies the actor/actress stars in.  
-    """
+        """
         film_list = []
         name = input("Enter actor/actress: ")
         searches.append(name)
         for index,row in self.df.iterrows():
             if name in row['actors'].split(', '):
                 film_list.append(row['title'])
-        return film_list
+        count_film = self.count.append(name + ": "+ str(len(film_list)))
+        count_film
+        return (f'\n {name} stars in: {film_list}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')
     
     def get_cast(self):
         """Used to get the cast of a film, based off user input. 
         The key is movie and value is cast.
-
             
         Returns: 
             film_dict: a key:value pair of the actors/actresses along with the 
@@ -62,29 +63,57 @@ class Cast:
         for index,row in self.df.iterrows():
             if film == row['title']:
                 film_dict[row['title']] = row['actors'].split(', ')
-                return film_dict
+                count_cast = self.count.append(film + ": "+ str(len(film_dict[row['title']])))
+                count_cast
+                return (f'\n {film_dict}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')
             
     def what_year(self):
         """Finds all movies in a given year.
         
         Returns:
-            movie_list (list): list of movies in a given year."""
+            movie_list (list): list of movies in a given year.
+        """
         movie_list = []
         year = input("Enter a year: ")
         searches.append(year)
         for index,row in self.df.iterrows():
             if year in row['year']:
                 movie_list.append(row['title'])
-        return movie_list
-
+        count_year = self.count.append(year + ": "+ str(len(movie_list)))
+        count_year
+        return (f'\n Movies in {year} are {movie_list}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')    
+    
+    def find_genre(self):
+        """Finds all movies in a given genre.
+        
+        Returns:
+            genre_list (list): list of movies in a given genre.
+        """
+        genre_list = []
+        genre = input("Enter a genre: ")
+        searches.append(genre)
+        for index,row in self.df.iterrows():
+            if genre in row['genre'].split(', '):
+                genre_list.append(row['title'])
+        count_genre = self.count.append(genre + ": "+ str(len(genre_list)))
+        count_genre
+        return (f'\n Movies with the genre of {genre} are: {genre_list}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')
+    
 def print_search_history(input_array):
+    """Used to store user inputs so then the program ends, the user has their search history.
+    
+    Args:
+        input_array (list of str): the user's input stored in a list
+        
+    Side effects:
+        print: prints a list of the user's input
+    """
     print ("User search history:\n")
     iteration = 0
     for input in input_array:
         print (str(iteration) + ":", input)
         iteration += 1
     searches.clear()   
-
 
 def main(moviecastcsv):
     """Uses a file path to identify appropriate output. 
@@ -98,16 +127,20 @@ def main(moviecastcsv):
         prints the output of the method identified in the Cast class that
         stays on the console after the runs.
     """
-    
-    file = Cast(moviecastcsv)
+    file = Search(moviecastcsv)
     while True:
-        run = input("Enter 'done' to exit the program.\nEnter find_film, get_cast, or what_year: ")
+        run = input("- Enter 'done' to exit the program.\n- Enter 'count' for the count of your searches.\n What method would you like to use find_film, get_cast, what_year or find_genre? ")
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
             print(file.get_cast())
         elif run == "what_year":
             print(file.what_year())
+        elif run == "find_genre":
+            print(file.find_genre())
+        elif run == "count":
+            print(f'\n{file.count}')
+            print(f'\n\n -**** WOULD YOU LIKE TO CONTINUE? ****-\n')
         elif run == "done":
             print("-"*50, "END OF PROGRAM", "-"*50)
             print_search_history(searches)
@@ -135,4 +168,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.moviecastcsv)
+    main(args.moviecastcsv)    
