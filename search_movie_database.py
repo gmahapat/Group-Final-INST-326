@@ -115,12 +115,7 @@ def print_search_history(input_array):
         print (str(iteration) + ":", input)
         iteration += 1
     searches.clear()   
-def user_input():
-    with open('user_input.csv','w', encoding='utf-8') as np:
-        column_names = ['Search History', 'Count']
-        atd = csv.DictWriter(np, column_names = column_names)
-        atd.writeheader()
-        
+
 def main(moviecastcsv):
     """Uses a file path to identify appropriate output. 
         Ask the user what they wish to find
