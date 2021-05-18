@@ -3,6 +3,7 @@
 import pandas as pd
 from argparse import ArgumentParser
 import sys
+import csv
 
 searches = []
 class Search:
@@ -114,7 +115,12 @@ def print_search_history(input_array):
         print (str(iteration) + ":", input)
         iteration += 1
     searches.clear()   
-
+def user_input():
+    with open('user_input.csv','w', encoding='utf-8') as np:
+        column_names = ['Search History', 'Count']
+        atd = csv.DictWriter(np, column_names = column_names)
+        atd.writeheader()
+        
 def main(moviecastcsv):
     """Uses a file path to identify appropriate output. 
         Ask the user what they wish to find
@@ -129,7 +135,7 @@ def main(moviecastcsv):
     """
     file = Search(moviecastcsv)
     while True:
-        run = input("- Enter 'done' to exit the program.\n- Enter 'count' for the count of your searches.\n What method would you like to use find_film, get_cast, what_year or find_genre? ")
+        run = input("- Enter 'done' to exit the program.\n * What method would you like to use find_film, get_cast, what_year or find_genre? ")
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
@@ -138,12 +144,9 @@ def main(moviecastcsv):
             print(file.what_year())
         elif run == "find_genre":
             print(file.find_genre())
-        elif run == "count":
-            print(f'\n{file.count}')
-            print(f'\n\n -**** WOULD YOU LIKE TO CONTINUE? ****-\n')
         elif run == "done":
             print("-"*50, "END OF PROGRAM", "-"*50)
-            print_search_history(searches)
+            print(f'{print_search_history(searches)}\n - {file.count}')
             break
         else:
             print("-"*50, "INVALID INPUT. TRY AGAIN.", "-"*50)
