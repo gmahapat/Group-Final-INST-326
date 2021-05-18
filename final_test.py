@@ -6,6 +6,8 @@ from unittest import mock
 import search_movie_database
 import pytest
 
+"""Used to test functions defined in electricity.py"""
+
 # testing find_film method
 def test_find_film():
     with mock.patch("builtins.input", side_effect=["Florence Pugh"]):
@@ -29,7 +31,16 @@ def test_get_cast_two():
         y2 = search_movie_database.Search("movies_and_cast.csv")
         assert y2.get_cast() == """\n {'Forrest Gump': ['Tom Hanks', 'Rebecca Williams', 'Sally Field', 'Michael Conner Humphreys', 'Harold G. Herthum', 'George Kelly', 'Bob Penny', 'John Randall', 'Sam Anderson', 'Margo Moorer', 'Ione M. Telech', 'Christine Seabrook', 'John Worsham', 'Peter Dobson', 'Siobhan Fallon Hogan']}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
-"""Used to test functions defined in electricity.py"""
+#testing what_year method
+def test_what_year():
+    with mock.patch("builtins.input", side_effect=["1890"]):
+        z1 = search_movie_database.Search("movies_and_cast.csv")
+        assert z1.what_year() == """\n Movies in 1890 are []\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
+
+def test_what_year_two():
+    with mock.patch("builtins.input", side_effect=["1911"]):
+        z2 = search_movie_database.Search("movies_and_cast.csv")
+        assert z2.what_year() == """\n Movies in 1911 are ['Cleopatra', 'Jesus of Nazareth', 'Omicron', 'La polizia sta a guardare', 'Kill Bill - Volume 1']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
 def test_main():
     assert s.main('find_film') == 'Enter actor/actress: '
