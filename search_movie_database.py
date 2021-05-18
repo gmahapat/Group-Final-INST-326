@@ -28,7 +28,7 @@ class Search:
         
         #This function will possibly be used in order to open the file and read it into a table. Currently under maintenance
     def display_data():
-        open_file = pd.read_csv("movies_and_cast_csv").head()
+        open_file = pd.read_csv("movies_and_cast.csv").head()
         open_file
     
     def find_film(self):
