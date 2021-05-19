@@ -19,11 +19,13 @@
 6. If you would like to end the program enter 'done' this will exit the program and output your search history along with the count of outputs for each input.
 ### Possible Inputs
 (All outputs are obtained from the CSV file)
-- 'find_film': this input will ask you for an actor/actress name, then output all movies that actor/actress was casted in 
-- 'get_cast': this input will ask you for a movie title, then output all the cast members associated with that movie
-- 'what_year': this input will ask you for a year, then output all movies released in that year
-- 'find_genre': this input will was for a genre, then output all movies with the identified genre
-- 'review': this will output the CSV file so users have an idea of what possible searches can be
-- 'done': this will end the program and output the user's search history along with the number of outputs each search had.
+- 'find_film': this input will ask you for an actor/actress name, then output all movies that actor/actress was casted in (Megan Fox)
+- 'get_cast': this input will ask you for a movie title, then output all the cast members associated with that movie (Cinderella)
+- 'what_year': this input will ask you for a year, then output all movies released in that year (1975)
+- 'between_year': this input will ask you for two years seperated by a comma with no spaces, then outputs movies between the two years. Make sure that the lesser year comes      before the greater year. (1890,1920)
+- 'find_genre': this input will ask for a genre, then output all movies with the identified genre (Romance)
+- 'duration_search': this input will ask for an integar, then output any movie with the number of minutes given or less. Ex. 50, the output will be any movie that is 50 minutes  or less. (50)
+- 'review': this will output the CSV file so users have an idea of what possible searches can be (review)
+- 'done': this will end the program and output the user's search history along with the number of outputs each search had. (done)
 ### Annotated Bibliography
 Kaggle - This source was used to obtain the CSV file
