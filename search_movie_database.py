@@ -87,6 +87,25 @@ class Search:
         count_year
         return (f'\n Movies in {year} are {movie_list}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')    
     
+    def between_year(self):  
+        """Finds all movies between two given years.
+        
+        Returns:
+            movie_list (list): list of movies between the given years.
+        """
+        movie_list_by_year = []
+        between = input("Enter two years, seperated by a comma, with no spaces: ")
+        searches.append(between)
+        spl = between.split(',')
+        year_one = int(spl[0])
+        year_two = int(spl[1])
+        for index,row in self.df.iterrows():
+            if year_one < int(row['year']) and year_two > int(row['year']):
+                movie_list_by_year.append(row['title'])
+        count_year_between = self.count.append(between + ": "+ str(len(movie_list_by_year)))
+        count_year_between
+        return (f'\n Movies between {year_one} and {year_two} are {movie_list_by_year}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')
+    
     def duration_search(self):
         """Finds all movies in a less than the inputted time.
         
@@ -158,13 +177,15 @@ def main(moviecastcsv):
     """
     file = Search(moviecastcsv)
     while True:
-        run = input("-Enter 'view' to display CSV file.\n-Enter 'done' to exit the program.\n * What method would you like to use find_film, duration_search, get_cast, what_year or find_genre? ")
+        run = input("-Enter 'view' to display CSV file.\n-Enter 'done' to exit the program.\n * What method would you like to use find_film, get_cast, what_year, between_year, find_genre or duration_search? ")
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
             print(file.get_cast())
         elif run == "what_year":
             print(file.what_year())
+        elif run == "between_year":
+            print(file.between_year())
         elif run == "find_genre":
             print(file.find_genre())
         elif run == "duration_search":
