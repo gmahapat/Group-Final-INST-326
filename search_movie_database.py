@@ -1,21 +1,19 @@
-""""Searches a database for the user's input."""
-
 import pandas as pd
 from argparse import ArgumentParser
 from IPython.display import display
 import sys
 import csv
 
+""""Searches a database for the user's input."""
 
 searches = []
 class Search:
     """"The purpose of this class is to find the user's input, from films
-        to cast, year and genre. 
+        to cast, year, genre and duration. 
     
     Attributes:
         file_name (str): path to file.
     """
-    
     def __init__(self, file_name):
         """ The purpose of this method is allowing the Search class to 
             initialize the attributes of the class. 
@@ -29,11 +27,6 @@ class Search:
         self.df['year'] = self.df['year'].astype(str)
         self.df['genre'] = self.df['genre'].astype(str)
         self.df['duration'] = self.df['duration'].astype(str)
-        
-        #This function will possibly be used in order to open the file and read it into a table. Currently under maintenance
-    #def display_data(self):
-        #open_file = pd.read_csv("movies_and_cast.csv").head()
-        #open_file
     
     def find_film(self):
         """Used to find the film(s) a given actor/actress stars in based on 
