@@ -19,11 +19,11 @@ def test_find_film_two():
         x2 = search_movie_database.Search("movies_and_cast.csv")
         assert x2.find_film() == """\n Jack Pickford stars in: ['Amore di madre', 'Tom Sawyer', 'The Goose Woman', 'The Bat', 'Brown of Harvard', 'Exit Smiling']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
-        #Test for find_genre function
+       # testing for find_genre function
 def test_find_genre():
-    with mock.patch("builtins.input", side_effect =["Weird Fiction"]):
+    with mock.patch("builtins.input", side_effect=["Weird Fiction"]):
         first = search_movie_database.Search("movies_and_cast.csv")
-        assert first.find_genre() == """\n Movies with the genre of Weird Function are: []\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
+        assert first.find_genre() == """\n Movies with the genre of Weird Fiction are: []\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
                    
 # testing get_cast method
 def test_get_cast():
