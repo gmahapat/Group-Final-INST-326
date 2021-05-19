@@ -141,7 +141,8 @@ def main(moviecastcsv):
             print(file.find_genre())
         elif run == "done":
             print("-"*50, "END OF PROGRAM", "-"*50)
-            print(f'{print_search_history(searches)}\n - {file.count}')
+            print_search_history(searches)
+            print("\nWORD COUNT: ", file.count)
             break
         else:
             print("-"*50, "INVALID INPUT. TRY AGAIN.", "-"*50)
@@ -166,4 +167,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.moviecastcsv)    
+    main(args.moviecastcsv)
