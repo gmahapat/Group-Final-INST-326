@@ -19,7 +19,7 @@ def test_find_film_two():
         x2 = search_movie_database.Search("movies_and_cast.csv")
         assert x2.find_film() == """\n Jack Pickford stars in: ['Amore di madre', 'Tom Sawyer', 'The Goose Woman', 'The Bat', 'Brown of Harvard', 'Exit Smiling']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
-       # testing for find_genre function
+# testing for find_genre function
 def test_find_genre():
     with mock.patch("builtins.input", side_effect=["Weird Fiction"]):
         first = search_movie_database.Search("movies_and_cast.csv")
@@ -47,8 +47,4 @@ def test_what_year_two():
         z2 = search_movie_database.Search("movies_and_cast.csv")
         assert z2.what_year() == """\n Movies in 1911 are ['Cleopatra', 'Jesus of Nazareth', 'Omicron', 'La polizia sta a guardare', 'Kill Bill - Volume 1']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
-def test_main():
-    assert s.main('find_film') == 'Enter actor/actress: '
-    assert s.main('get_cast') == 'Enter a movie name: '
-    assert s.main('what_year') == 'Enter a year: '
 
