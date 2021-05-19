@@ -58,4 +58,8 @@ def test_between_year():
         test2 = search_movie_database.Search("movies_and_cast.csv")
         assert test2.between_year() == """\n Movies between 1890 and 1912 are ['Miss Jerry', 'The Story of the Kelly Gang', 'Cleopatra', 'Jesus of Nazareth', 'Omicron', 'La polizia sta a guardare', 'Kill Bill - Volume 1']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
-
+# testing duration_search method
+def test_duration_search():
+    with mock.patch("builtins.input", side_effect=["44"]):
+        x1 = search_movie_database.Search("movies_and_cast.csv")
+        assert x1.duration_search() == """\n The Movies that are less or equal to 44 minutes are ['Una ragazza per bene', 'Dragon Ball Z - Il diabolico guerriero degli inferi', 'Dang wo men tong zai yi qi', 'The Overbrook Brothers']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
