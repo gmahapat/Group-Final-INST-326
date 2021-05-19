@@ -28,6 +28,7 @@ class Search:
         self.df['actors'] = self.df['actors'].astype(str)
         self.df['year'] = self.df['year'].astype(str)
         self.df['genre'] = self.df['genre'].astype(str)
+        self.df['duration'] = self.df['duration'].astype(str)
         
         #This function will possibly be used in order to open the file and read it into a table. Currently under maintenance
     #def display_data(self):
@@ -86,6 +87,22 @@ class Search:
         count_year
         return (f'\n Movies in {year} are {movie_list}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')    
     
+    def duration_search(self):
+        """Finds all movies in a less than the inputted time.
+        
+        Returns:
+            movie_list (list): list of movies in a given mins.
+        """
+        movie_list = []
+        mins = input("Enter the maximum duration for movies(in minutes). ")
+        searches.append(mins)
+        for index,row in self.df.iterrows():
+          if int(row['duration']) <= int(mins) :
+            movie_list.append(row['title'])
+        count_mins = self.count.append(mins + ": "+ str(len(movie_list)))
+        count_mins
+        return (f'\n The Movies that are less or equal to {mins} minutes are {movie_list}\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n')
+
     def find_genre(self):
         """Finds all movies in a given genre.
         
@@ -141,7 +158,7 @@ def main(moviecastcsv):
     """
     file = Search(moviecastcsv)
     while True:
-        run = input("-Enter 'view' to display CSV file.\n-Enter 'done' to exit the program.\n * What method would you like to use find_film, get_cast, what_year or find_genre? ")
+        run = input("-Enter 'view' to display CSV file.\n-Enter 'done' to exit the program.\n * What method would you like to use find_film, duration_search, get_cast, what_year or find_genre? ")
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
@@ -150,6 +167,8 @@ def main(moviecastcsv):
             print(file.what_year())
         elif run == "find_genre":
             print(file.find_genre())
+        elif run == "duration_search":
+            print(file.duration_search())
         elif run == "view":
             display_data(moviecastcsv)
         elif run == "done":
