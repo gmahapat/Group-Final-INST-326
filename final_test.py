@@ -6,7 +6,7 @@ from unittest import mock
 import search_movie_database
 import pytest
 
-"""Used to test functions defined in electricity.py"""
+"""Used to test functions defined in search_movie_database.py"""
 
 # testing find_film method
 def test_find_film():
