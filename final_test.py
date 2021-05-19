@@ -46,5 +46,16 @@ def test_what_year_two():
     with mock.patch("builtins.input", side_effect=["1911"]):
         z2 = search_movie_database.Search("movies_and_cast.csv")
         assert z2.what_year() == """\n Movies in 1911 are ['Cleopatra', 'Jesus of Nazareth', 'Omicron', 'La polizia sta a guardare', 'Kill Bill - Volume 1']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
+    
+#testing between_year method:
+def test_between_year():
+    with mock.patch("builtins.input", side_effect=["1800,1911"]):
+        test = search_movie_database.Search("movies_and_cast.csv")
+        assert test.between_year() == """\n Movies between 1800 and 1911 are ['Miss Jerry', 'The Story of the Kelly Gang']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
+        
+def test_between_year():    
+    with mock.patch("builtins.input", side_effect=["1890,1912"]):
+        test2 = search_movie_database.Search("movies_and_cast.csv")
+        assert test2.between_year() == """\n Movies between 1890 and 1912 are ['Miss Jerry', 'The Story of the Kelly Gang', 'Cleopatra', 'Jesus of Nazareth', 'Omicron', 'La polizia sta a guardare', 'Kill Bill - Volume 1']\n\n -**** WOULD YOU LIKE TO SELECT AGAIN? ****-\n"""
 
 
