@@ -2,8 +2,10 @@
 
 import pandas as pd
 from argparse import ArgumentParser
+from IPython.display import display
 import sys
 import csv
+
 
 searches = []
 class Search:
@@ -28,9 +30,9 @@ class Search:
         self.df['genre'] = self.df['genre'].astype(str)
         
         #This function will possibly be used in order to open the file and read it into a table. Currently under maintenance
-    def display_data():
-        open_file = pd.read_csv("movies_and_cast.csv").head()
-        open_file
+    #def display_data(self):
+        #open_file = pd.read_csv("movies_and_cast.csv").head()
+        #open_file
     
     def find_film(self):
         """Used to find the film(s) a given actor/actress stars in based on 
@@ -116,6 +118,15 @@ def print_search_history(input_array):
         iteration += 1
     searches.clear()   
 
+def display_data(moviecastcsv):
+    """Displays the CSV file
+    
+    Args:
+        moviecastcsv (file): path to the CSV file to be displayed
+    """
+    df = pd.read_csv(moviecastcsv)
+    display(df)
+    
 def main(moviecastcsv):
     """Uses a file path to identify appropriate output. 
         Ask the user what they wish to find
@@ -130,7 +141,7 @@ def main(moviecastcsv):
     """
     file = Search(moviecastcsv)
     while True:
-        run = input("- Enter 'done' to exit the program.\n * What method would you like to use find_film, get_cast, what_year or find_genre? ")
+        run = input("-Enter 'view' to display CSV file.\n-Enter 'done' to exit the program.\n * What method would you like to use find_film, get_cast, what_year or find_genre? ")
         if run == "find_film":
             print(file.find_film())
         elif run == "get_cast":
@@ -139,10 +150,12 @@ def main(moviecastcsv):
             print(file.what_year())
         elif run == "find_genre":
             print(file.find_genre())
+        elif run == "view":
+            display_data(moviecastcsv)
         elif run == "done":
             print("-"*50, "END OF PROGRAM", "-"*50)
             print_search_history(searches)
-            print("\nWORD COUNT: ", file.count)
+            print("\nOUTPUT COUNT: ", file.count)
             break
         else:
             print("-"*50, "INVALID INPUT. TRY AGAIN.", "-"*50)
