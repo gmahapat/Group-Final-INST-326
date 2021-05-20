@@ -29,5 +29,7 @@
 - 'done': this will end the program and output the user's search history along with the number of outputs each search had. (done)
 ### Annotated Bibliography
 Kaggle - 
+
 Leone, S. (2020, September 14). IMDb movies extensive dataset. Kaggle. https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset?select=IMDb%2Bmovies.csv. 
+
 This source was used to obtain the CSV file
